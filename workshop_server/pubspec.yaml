@@ -8,6 +8,8 @@ environment:
 
 dependencies:
   serverpod: ^1.1.1
+  workshop_client:
+    path: ../workshop_client
 
 dev_dependencies:
   lints: ^2.0.1
