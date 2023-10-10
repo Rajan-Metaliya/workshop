@@ -1,6 +1,7 @@
 class: Users
 table: users
-fields: 
+fields:
   name: String
   email: String
   password: String
+  token: String

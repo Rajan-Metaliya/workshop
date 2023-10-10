@@ -14,6 +14,7 @@ class Users extends _i1.TableRow {
     required this.name,
     required this.email,
     required this.password,
+    required this.token,
   }) : super(id);
 
   factory Users.fromJson(
@@ -27,6 +28,8 @@ class Users extends _i1.TableRow {
           serializationManager.deserialize<String>(jsonSerialization['email']),
       password: serializationManager
           .deserialize<String>(jsonSerialization['password']),
+      token:
+          serializationManager.deserialize<String>(jsonSerialization['token']),
     );
   }
 
@@ -38,6 +41,8 @@ class Users extends _i1.TableRow {
 
   String password;
 
+  String token;
+
   @override
   String get tableName => 'users';
 
@@ -48,6 +53,7 @@ class Users extends _i1.TableRow {
       'name': name,
       'email': email,
       'password': password,
+      'token': token,
     };
   }
 
@@ -58,6 +64,7 @@ class Users extends _i1.TableRow {
       'name': name,
       'email': email,
       'password': password,
+      'token': token,
     };
   }
 
@@ -68,6 +75,7 @@ class Users extends _i1.TableRow {
       'name': name,
       'email': email,
       'password': password,
+      'token': token,
     };
   }
 
@@ -88,6 +96,9 @@ class Users extends _i1.TableRow {
         return;
       case 'password':
         password = value;
+        return;
+      case 'token':
+        token = value;
         return;
       default:
         throw UnimplementedError();
@@ -219,12 +230,15 @@ class UsersTable extends _i1.Table {
 
   final password = _i1.ColumnString('password');
 
+  final token = _i1.ColumnString('token');
+
   @override
   List<_i1.Column> get columns => [
         id,
         name,
         email,
         password,
+        token,
       ];
 }
 

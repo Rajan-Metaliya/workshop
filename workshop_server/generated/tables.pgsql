@@ -39,7 +39,8 @@ CREATE TABLE "users" (
   "id" serial,
   "name" text NOT NULL,
   "email" text NOT NULL,
-  "password" text NOT NULL
+  "password" text NOT NULL,
+  "token" text NOT NULL
 );
 
 ALTER TABLE ONLY "users"

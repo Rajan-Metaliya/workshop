@@ -14,6 +14,7 @@ class Users extends _i1.SerializableEntity {
     required this.name,
     required this.email,
     required this.password,
+    required this.token,
   });
 
   factory Users.fromJson(
@@ -27,6 +28,8 @@ class Users extends _i1.SerializableEntity {
           serializationManager.deserialize<String>(jsonSerialization['email']),
       password: serializationManager
           .deserialize<String>(jsonSerialization['password']),
+      token:
+          serializationManager.deserialize<String>(jsonSerialization['token']),
     );
   }
 
@@ -41,6 +44,8 @@ class Users extends _i1.SerializableEntity {
 
   String password;
 
+  String token;
+
   @override
   Map<String, dynamic> toJson() {
     return {
@@ -48,6 +53,7 @@ class Users extends _i1.SerializableEntity {
       'name': name,
       'email': email,
       'password': password,
+      'token': token,
     };
   }
 }
