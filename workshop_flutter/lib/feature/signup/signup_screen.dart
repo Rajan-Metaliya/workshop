@@ -4,20 +4,22 @@ import 'package:go_router/go_router.dart';
 import '../../app/routes/route_path.dart';
 import '../../utils/validator/validator_mixin.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _SignUpScreenState createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> with ValidatorMixin {
+class _SignUpScreenState extends State<SignUpScreen> with ValidatorMixin {
+  final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
+    _usernameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
@@ -26,20 +28,34 @@ class _LoginScreenState extends State<LoginScreen> with ValidatorMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 32,
-        ),
-        child: Form(
-          key: _formKey,
+      appBar: AppBar(
+        leading: BackButton(onPressed: () {
+          context.go(RoutePath.login);
+        }),
+        title: const Text('Sign Up'),
+      ),
+      body: Form(
+        key: _formKey,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              TextFormField(
+                controller: _usernameController,
+                decoration: const InputDecoration(
+                  hintText: 'Username',
+                ),
+                validator: (value) {
+                  if (!isValidUsername(value)) {
+                    return 'Please enter a valid username';
+                  }
+                  return null;
+                },
+              ),
               const SizedBox(height: 16),
               TextFormField(
                 controller: _emailController,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: const InputDecoration(
                   hintText: 'Email',
                 ),
@@ -54,7 +70,6 @@ class _LoginScreenState extends State<LoginScreen> with ValidatorMixin {
               TextFormField(
                 controller: _passwordController,
                 obscureText: true,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: const InputDecoration(
                   hintText: 'Password',
                 ),
@@ -68,25 +83,11 @@ class _LoginScreenState extends State<LoginScreen> with ValidatorMixin {
               const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {}
-                  setState(() {
+                  if (_formKey.currentState!.validate()) {
                     context.go(RoutePath.home);
-                  });
+                  }
                 },
-                child: const Text('Login'),
-              ),
-              const SizedBox(height: 16),
-              GestureDetector(
-                onTap: () {
-                  context.go(RoutePath.signUp);
-                },
-                child: const Text(
-                  'Don\'t have an account? Sign up',
-                  style: TextStyle(
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+                child: const Text('Sign Up'),
               ),
             ],
           ),
