@@ -63,4 +63,22 @@ class Cart extends _i1.SerializableEntity {
       'totalAmount': totalAmount,
     };
   }
+
+  Cart copyWith({
+    int? id,
+    int? userId,
+    int? productId,
+    String? productName,
+    int? quantity,
+    double? totalAmount,
+  }) {
+    return Cart(
+      id: id ?? this.id,
+      userId: userId ?? this.userId,
+      productId: productId ?? this.productId,
+      productName: productName ?? this.productName,
+      quantity: quantity ?? this.quantity,
+      totalAmount: totalAmount ?? this.totalAmount,
+    );
+  }
 }
