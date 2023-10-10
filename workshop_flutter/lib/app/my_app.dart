@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:workshop_flutter/feature/splash/ui/splash_screen.dart';
+
+import 'routes/router.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Serverpod Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(),
+      routerConfig: router,
     );
   }
 }
