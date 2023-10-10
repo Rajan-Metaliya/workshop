@@ -30,7 +30,7 @@ class _SignUpScreenState extends State<SignUpScreen> with ValidatorMixin {
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(onPressed: () {
-          context.go(RoutePath.login);
+          context.goNamed(RoutePath.login);
         }),
         title: const Text('Sign Up'),
       ),
@@ -84,7 +84,7 @@ class _SignUpScreenState extends State<SignUpScreen> with ValidatorMixin {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    context.go(RoutePath.home);
+                    context.goNamed(RoutePath.home);
                   }
                 },
                 child: const Text('Sign Up'),

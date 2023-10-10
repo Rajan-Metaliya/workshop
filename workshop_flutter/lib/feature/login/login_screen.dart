@@ -70,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> with ValidatorMixin {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {}
                   setState(() {
-                    context.go(RoutePath.home);
+                    context.goNamed(RoutePath.home);
                   });
                 },
                 child: const Text('Login'),
@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> with ValidatorMixin {
               const SizedBox(height: 16),
               GestureDetector(
                 onTap: () {
-                  context.go(RoutePath.signUp);
+                  context.goNamed(RoutePath.signUp);
                 },
                 child: const Text(
                   'Don\'t have an account? Sign up',

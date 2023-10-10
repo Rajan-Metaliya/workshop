@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
       child: BlocListener<SplashBloc, SplashState>(
         listener: (context, state) {
           if (state is SplashLoadedState) {
-            context.go(RoutePath.login);
+            context.goNamed(RoutePath.login);
           }
         },
         child: const Scaffold(
