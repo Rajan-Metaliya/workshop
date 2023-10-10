@@ -1,0 +1,8 @@
+class: Cart
+table: cart
+fields:
+  userId: int
+  productId: int
+  productName: String
+  quantity: int
+  totalAmount: double
