@@ -1,10 +1,11 @@
 import 'package:get_it/get_it.dart';
-import 'package:workshop_flutter/data/repo/cart/cart_repo.dart';
-import 'package:workshop_flutter/data/repo/cart/cart_repo_impl.dart';
-import 'package:workshop_flutter/data/repo/product/product_repo.dart';
-import 'package:workshop_flutter/data/repo/product/product_repo_impl.dart';
-import 'package:workshop_flutter/data/repo/user/user_repo.dart';
-import 'package:workshop_flutter/data/repo/user/user_repo_impl.dart';
+
+import 'cart/cart_repo.dart';
+import 'cart/cart_repo_impl.dart';
+import 'product/product_repo.dart';
+import 'product/product_repo_impl.dart';
+import 'user/user_repo.dart';
+import 'user/user_repo_impl.dart';
 
 final getIt = GetIt.instance;
 

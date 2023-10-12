@@ -21,29 +21,29 @@ class _EndpointCart extends _i1.EndpointRef {
   @override
   String get name => 'cart';
 
-  _i2.Future<_i3.Response<dynamic>> addToCart(_i4.Cart cart) =>
-      caller.callServerEndpoint<_i3.Response<dynamic>>(
+  _i2.Future<_i3.AppResponse<dynamic>> addToCart(_i4.Cart cart) =>
+      caller.callServerEndpoint<_i3.AppResponse<dynamic>>(
         'cart',
         'addToCart',
         {'cart': cart},
       );
 
-  _i2.Future<_i3.Response<List<_i4.Cart>>> getCart(int userId) =>
-      caller.callServerEndpoint<_i3.Response<List<_i4.Cart>>>(
+  _i2.Future<_i3.AppResponse<List<_i4.Cart>>> getCart(int userId) =>
+      caller.callServerEndpoint<_i3.AppResponse<List<_i4.Cart>>>(
         'cart',
         'getCart',
         {'userId': userId},
       );
 
-  _i2.Future<_i3.Response<dynamic>> updateCart(_i4.Cart cart) =>
-      caller.callServerEndpoint<_i3.Response<dynamic>>(
+  _i2.Future<_i3.AppResponse<dynamic>> updateCart(_i4.Cart cart) =>
+      caller.callServerEndpoint<_i3.AppResponse<dynamic>>(
         'cart',
         'updateCart',
         {'cart': cart},
       );
 
-  _i2.Future<_i3.Response<dynamic>> deleteCart(int id) =>
-      caller.callServerEndpoint<_i3.Response<dynamic>>(
+  _i2.Future<_i3.AppResponse<dynamic>> deleteCart(int id) =>
+      caller.callServerEndpoint<_i3.AppResponse<dynamic>>(
         'cart',
         'deleteCart',
         {'id': id},
@@ -69,36 +69,36 @@ class _EndpointProduct extends _i1.EndpointRef {
   @override
   String get name => 'product';
 
-  _i2.Future<_i3.Response<List<_i5.Product>>> getAllProducts() =>
-      caller.callServerEndpoint<_i3.Response<List<_i5.Product>>>(
+  _i2.Future<_i3.AppResponse<List<_i5.Product>>> getAllProducts() =>
+      caller.callServerEndpoint<_i3.AppResponse<List<_i5.Product>>>(
         'product',
         'getAllProducts',
         {},
       );
 
-  _i2.Future<_i3.Response<_i5.Product>> getProduct(int id) =>
-      caller.callServerEndpoint<_i3.Response<_i5.Product>>(
+  _i2.Future<_i3.AppResponse<_i5.Product>> getProduct(int id) =>
+      caller.callServerEndpoint<_i3.AppResponse<_i5.Product>>(
         'product',
         'getProduct',
         {'id': id},
       );
 
-  _i2.Future<_i3.Response<dynamic>> addProduct(_i5.Product product) =>
-      caller.callServerEndpoint<_i3.Response<dynamic>>(
+  _i2.Future<_i3.AppResponse<dynamic>> addProduct(_i5.Product product) =>
+      caller.callServerEndpoint<_i3.AppResponse<dynamic>>(
         'product',
         'addProduct',
         {'product': product},
       );
 
-  _i2.Future<_i3.Response<dynamic>> updateProduct(_i5.Product product) =>
-      caller.callServerEndpoint<_i3.Response<dynamic>>(
+  _i2.Future<_i3.AppResponse<dynamic>> updateProduct(_i5.Product product) =>
+      caller.callServerEndpoint<_i3.AppResponse<dynamic>>(
         'product',
         'updateProduct',
         {'product': product},
       );
 
-  _i2.Future<_i3.Response<dynamic>> deleteProduct(int id) =>
-      caller.callServerEndpoint<_i3.Response<dynamic>>(
+  _i2.Future<_i3.AppResponse<dynamic>> deleteProduct(int id) =>
+      caller.callServerEndpoint<_i3.AppResponse<dynamic>>(
         'product',
         'deleteProduct',
         {'id': id},
@@ -111,11 +111,11 @@ class _EndpointUser extends _i1.EndpointRef {
   @override
   String get name => 'user';
 
-  _i2.Future<_i3.Response<_i6.Users>?> getUserWithEmailPassword({
+  _i2.Future<_i3.AppResponse<_i6.Users?>> getUserWithEmailPassword({
     required String email,
     required String password,
   }) =>
-      caller.callServerEndpoint<_i3.Response<_i6.Users>?>(
+      caller.callServerEndpoint<_i3.AppResponse<_i6.Users?>>(
         'user',
         'getUserWithEmailPassword',
         {
@@ -124,15 +124,15 @@ class _EndpointUser extends _i1.EndpointRef {
         },
       );
 
-  _i2.Future<_i3.Response<dynamic>> addUser(_i6.Users user) =>
-      caller.callServerEndpoint<_i3.Response<dynamic>>(
+  _i2.Future<_i3.AppResponse<_i6.Users>> addUser(_i6.Users user) =>
+      caller.callServerEndpoint<_i3.AppResponse<_i6.Users>>(
         'user',
         'addUser',
         {'user': user},
       );
 
-  _i2.Future<_i3.Response<dynamic>> updateUser(_i6.Users user) =>
-      caller.callServerEndpoint<_i3.Response<dynamic>>(
+  _i2.Future<_i3.AppResponse<_i6.Users>> updateUser(_i6.Users user) =>
+      caller.callServerEndpoint<_i3.AppResponse<_i6.Users>>(
         'user',
         'updateUser',
         {'user': user},

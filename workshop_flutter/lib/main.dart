@@ -1,9 +1,20 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'app/my_app.dart';
 import 'data/repo/repo.dart';
+import 'data/service/service.dart';
 
-void main() {
-  initRepo();
-  runApp(const MyApp());
+Future<void> main() async {
+  runZonedGuarded(() async {
+    initService();
+    initRepo();
+
+    await apiServer.init(baseUrl: "http://localhost:8080/");
+
+    return runApp(const MyApp());
+  }, (error, stack) {
+    debugPrint(error.toString());
+  });
 }

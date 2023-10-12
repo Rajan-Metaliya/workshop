@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
 import '../../../data/repo/repo.dart';
+import '../../../utils/exceptions/exceptions.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
@@ -14,6 +15,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       try {
         userRepo.login(event.username, event.password);
         emit(LoginSuccessState());
+      } on RepoException catch (e) {
+        emit(LoginErrorState(e.message));
       } catch (e) {
         emit(LoginErrorState(e.toString()));
       }

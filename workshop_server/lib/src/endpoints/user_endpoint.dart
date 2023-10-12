@@ -1,10 +1,10 @@
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:serverpod/server.dart';
-import 'package:workshop_client/workshop_client.dart' show Response;
+import 'package:workshop_client/workshop_client.dart' show AppResponse;
 import 'package:workshop_server/src/generated/protocol.dart';
 
 class UserEndpoint extends Endpoint {
-  Future<Response<Users>?> getUserWithEmailPassword(
+  Future<AppResponse<Users?>> getUserWithEmailPassword(
     Session session, {
     required String email,
     required String password,
@@ -15,40 +15,42 @@ class UserEndpoint extends Endpoint {
         where: (t) => t.email.equals(email) & t.password.equals(password),
       );
       if (user == null) {
-        return Response.notFound("User not found");
+        return AppResponse.notFound("User not found");
       }
 
-      return Response<Users>(
+      return AppResponse<Users>(
         statusCode: 200,
         data: user,
         message: "User found",
       );
     } catch (e) {
-      return Response.error(e.toString());
+      return AppResponse.error(e.toString());
     }
   }
 
-  Future<Response> addUser(Session session, Users user) async {
+  Future<AppResponse<Users>> addUser(Session session, Users user) async {
     try {
       await Users.insert(session, user);
-      return Response(
+      return AppResponse(
         statusCode: 200,
         message: "User added",
+        data: user,
       );
     } catch (e) {
-      return Response.error(e.toString());
+      return AppResponse.error(e.toString());
     }
   }
 
-  Future<Response> updateUser(Session session, Users user) async {
+  Future<AppResponse<Users>> updateUser(Session session, Users user) async {
     try {
       await Users.insert(session, user);
-      return Response(
+      return AppResponse(
         statusCode: 200,
         message: "user updated",
+        data: user,
       );
     } catch (e) {
-      return Response.error(e.toString());
+      return AppResponse.error(e.toString());
     }
   }
 

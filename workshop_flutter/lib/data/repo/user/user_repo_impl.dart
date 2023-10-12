@@ -1,30 +1,38 @@
 import 'package:workshop_client/workshop_client.dart';
-import 'package:workshop_flutter/data/repo/user/user_repo.dart';
+
+import '../../../utils/exceptions/exceptions.dart';
+import '../../service/service.dart';
+import 'user_repo.dart';
 
 class UserRepoImpl extends UserRepo {
   @override
-  Future<Users> login(String username, String password) async {
-    await Future.delayed(const Duration(seconds: 2));
+  Future<Users?> login(String username, String password) async {
+    try {
+      final response = await apiServer.client.user
+          .getUserWithEmailPassword(email: username, password: password);
 
-    return Users(
-      id: 1,
-      password: password,
-      name: username,
-      email: '$username@example.com',
-      token: '',
-    );
+      if (response.data != null) {
+        return response.data;
+      } else {
+        throw RepoException(message: response.message);
+      }
+    } catch (e) {
+      throw RepoException(message: e.toString());
+    }
   }
 
   @override
-  Future<Users> register(Users user) async {
-    await Future.delayed(const Duration(seconds: 2));
+  Future<Users?> register(Users user) async {
+    try {
+      final response = await apiServer.client.user.addUser(user);
 
-    return Users(
-      id: 1,
-      password: user.password,
-      name: user.name,
-      email: user.email,
-      token: '',
-    );
+      if (response.data != null) {
+        return response.data;
+      } else {
+        throw RepoException(message: response.message);
+      }
+    } catch (e) {
+      throw RepoException(message: e.toString());
+    }
   }
 }
