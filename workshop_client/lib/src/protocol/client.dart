@@ -111,11 +111,11 @@ class _EndpointUser extends _i1.EndpointRef {
   @override
   String get name => 'user';
 
-  _i2.Future<_i3.AppResponse<_i6.Users?>> getUserWithEmailPassword({
+  _i2.Future<_i6.Users?> getUserWithEmailPassword({
     required String email,
     required String password,
   }) =>
-      caller.callServerEndpoint<_i3.AppResponse<_i6.Users?>>(
+      caller.callServerEndpoint<_i6.Users?>(
         'user',
         'getUserWithEmailPassword',
         {
@@ -124,15 +124,15 @@ class _EndpointUser extends _i1.EndpointRef {
         },
       );
 
-  _i2.Future<_i3.AppResponse<_i6.Users>> addUser(_i6.Users user) =>
-      caller.callServerEndpoint<_i3.AppResponse<_i6.Users>>(
+  _i2.Future<_i6.Users> addUser(_i6.Users user) =>
+      caller.callServerEndpoint<_i6.Users>(
         'user',
         'addUser',
         {'user': user},
       );
 
-  _i2.Future<_i3.AppResponse<_i6.Users>> updateUser(_i6.Users user) =>
-      caller.callServerEndpoint<_i3.AppResponse<_i6.Users>>(
+  _i2.Future<_i6.Users> updateUser(_i6.Users user) =>
+      caller.callServerEndpoint<_i6.Users>(
         'user',
         'updateUser',
         {'user': user},

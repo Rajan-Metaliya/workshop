@@ -33,4 +33,4 @@ test serverpod installation by running below command
 
 docker cp ./generated/tables-serverpod.pgsql workshop_server-postgres-1:/docker-entrypoint-initdb.d/tables-serverpod.pgsql
 
-$ docker exec -u postgres workshop_server psql workshop postgres -f docker-entrypoint-initdb.d/tables-serverpod.pgsql
+$ docker exec -u postgres workshop_server-postgres-1 psql workshop postgres -f docker-entrypoint-initdb.d/tables-serverpod.pgsql

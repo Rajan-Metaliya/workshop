@@ -11,10 +11,10 @@ class UserRepoImpl extends UserRepo {
       final response = await apiServer.client.user
           .getUserWithEmailPassword(email: username, password: password);
 
-      if (response.data != null) {
-        return response.data;
+      if (response != null) {
+        return response;
       } else {
-        throw RepoException(message: response.message);
+        throw RepoException(message: "Response is null");
       }
     } catch (e) {
       throw RepoException(message: e.toString());
@@ -26,11 +26,7 @@ class UserRepoImpl extends UserRepo {
     try {
       final response = await apiServer.client.user.addUser(user);
 
-      if (response.data != null) {
-        return response.data;
-      } else {
-        throw RepoException(message: response.message);
-      }
+      return response;
     } catch (e) {
       throw RepoException(message: e.toString());
     }

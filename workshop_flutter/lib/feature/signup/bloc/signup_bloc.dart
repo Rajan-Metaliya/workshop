@@ -14,14 +14,18 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
       emit(SignupLoadingState());
 
       try {
-        await userRepo.register(
+        final user = await userRepo.register(
           Users(
               name: event.username,
               email: event.email,
               password: event.password,
               token: ""),
         );
-        emit(SignupSuccessState());
+        if (user != null) {
+          emit(SignupSuccessState());
+        } else {
+          emit(SignupErrorState("Unable to create user"));
+        }
       } on RepoException catch (e) {
         emit(SignupErrorState(e.message));
       } catch (e) {
