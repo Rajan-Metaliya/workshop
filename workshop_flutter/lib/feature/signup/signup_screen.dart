@@ -14,9 +14,12 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> with ValidatorMixin {
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _usernameController =
+      TextEditingController(text: "Raj");
+  final TextEditingController _emailController =
+      TextEditingController(text: "rajan@mail.com");
+  final TextEditingController _passwordController =
+      TextEditingController(text: "Rajan@123");
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -100,7 +103,13 @@ class _SignUpScreenState extends State<SignUpScreen> with ValidatorMixin {
                       ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            context.goNamed(RoutePath.home);
+                            context.read<SignupBloc>().add(
+                                  SignupButtonPressedEvent(
+                                    username: _usernameController.text,
+                                    email: _emailController.text,
+                                    password: _passwordController.text,
+                                  ),
+                                );
                           }
                         },
                         child: const Text('Sign Up'),

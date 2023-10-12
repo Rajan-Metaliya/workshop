@@ -11,7 +11,7 @@ Future<void> main() async {
     initService();
     initRepo();
 
-    await apiServer.init(baseUrl: "http://localhost:8080/");
+    await apiServer.init(baseUrl: "http://10.0.2.2:8090/");
 
     return runApp(const MyApp());
   }, (error, stack) {

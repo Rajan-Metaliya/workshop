@@ -9,11 +9,11 @@ part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(LoginLoadedState()) {
-    on<LoginButtonPressedEvent>((event, emit) {
+    on<LoginButtonPressedEvent>((event, emit) async {
       emit(LoginLoadingState());
 
       try {
-        userRepo.login(event.username, event.password);
+        await userRepo.login(event.username, event.password);
         emit(LoginSuccessState());
       } on RepoException catch (e) {
         emit(LoginErrorState(e.message));
