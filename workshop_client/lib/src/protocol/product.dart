@@ -56,4 +56,21 @@ class Product extends _i1.SerializableEntity {
       'price': price,
     };
   }
+
+  // copyWith
+  Product copyWith({
+    int? id,
+    String? name,
+    String? image,
+    String? description,
+    double? price,
+  }) {
+    return Product(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      image: image ?? this.image,
+      description: description ?? this.description,
+      price: price ?? this.price,
+    );
+  }
 }
