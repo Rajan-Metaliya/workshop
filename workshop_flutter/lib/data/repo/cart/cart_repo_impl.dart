@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:workshop_client/workshop_client.dart';
 
 import 'cart_repo.dart';
@@ -9,7 +10,7 @@ class CartRepoImpl extends CartRepo {
   Future<void> addCart(Cart cart) async {
     // await Future.delayed(const Duration(milliseconds: 500));
     _cartList.add(cart.copyWith(id: _cartList.length));
-    print(_cartList.length);
+    debugPrint(_cartList.length.toString());
   }
 
   @override
