@@ -31,7 +31,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
         emit(CartLoadingState());
         try {
-          await cartRepo.addCart(event.cart);
+          await cartRepo.addCart(event.cart..quantity = event.quantity);
           emit(CartShowMessageState("Product added to cart"));
         } catch (e) {
           emit(CartShowMessageState(e.toString()));

@@ -42,6 +42,7 @@ class HomeScreen extends StatelessWidget {
                         .read<ProductBloc>()
                         .add(ProductFetchEvent(isRefresh: true));
                   },
+                  springAnimationDurationInMilliseconds: 100,
                   child: ListView.builder(
                     itemCount: state.products.length,
                     itemBuilder: (context, index) {

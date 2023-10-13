@@ -48,7 +48,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       } finally {
         EasyLoading.dismiss();
       }
-      emit(currentState);
+      add(ProductFetchEvent());
     });
 
     on<ProductAddProductEvent>((event, emit) async {
