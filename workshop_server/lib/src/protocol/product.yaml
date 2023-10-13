@@ -6,7 +6,7 @@ fields:
   image: String
   description: String
   price: double
-  cartQty: int?, database
+  cartQty: int?
 indexes:
   product_id_idx:
     fields: productId

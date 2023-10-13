@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:workshop_client/workshop_client.dart';
 
+import 'quantity_input_widget.dart';
+
 class ProductWidget extends StatelessWidget {
   const ProductWidget({
     super.key,
@@ -10,7 +12,7 @@ class ProductWidget extends StatelessWidget {
 
   final Product product;
 
-  final void Function() addToCart;
+  final void Function(int) addToCart;
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +48,12 @@ class ProductWidget extends StatelessWidget {
               children: [
                 Text(product.price.toString(),
                     style: Theme.of(context).textTheme.labelMedium),
-                IconButton(
-                  icon: const Icon(Icons.add_shopping_cart),
-                  onPressed: addToCart,
-                ),
+                QuantityInputWidget(
+                  quantity: product.cartQty ?? 0,
+                  onChanged: (value) {
+                    addToCart(value);
+                  },
+                )
               ],
             ),
           ],

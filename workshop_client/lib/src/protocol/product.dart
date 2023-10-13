@@ -16,6 +16,7 @@ class Product extends _i1.SerializableEntity {
     required this.image,
     required this.description,
     required this.price,
+    this.cartQty,
   });
 
   factory Product.fromJson(
@@ -33,6 +34,8 @@ class Product extends _i1.SerializableEntity {
           .deserialize<String>(jsonSerialization['description']),
       price:
           serializationManager.deserialize<double>(jsonSerialization['price']),
+      cartQty:
+          serializationManager.deserialize<int?>(jsonSerialization['cartQty']),
     );
   }
 
@@ -51,6 +54,8 @@ class Product extends _i1.SerializableEntity {
 
   double price;
 
+  int? cartQty;
+
   @override
   Map<String, dynamic> toJson() {
     return {
@@ -60,6 +65,7 @@ class Product extends _i1.SerializableEntity {
       'image': image,
       'description': description,
       'price': price,
+      'cartQty': cartQty,
     };
   }
 }

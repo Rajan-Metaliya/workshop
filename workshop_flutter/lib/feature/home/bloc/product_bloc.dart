@@ -33,7 +33,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           userId: authService.user.userId,
           productId: event.product.productId,
           productName: event.product.name,
-          quantity: 1,
+          quantity: event.quantity,
           totalAmount: event.product.price,
         );
 

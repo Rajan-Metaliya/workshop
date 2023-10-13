@@ -9,6 +9,7 @@ class CartFetchEvent extends CartEvent {}
 
 class CartRemoveItemEvent extends CartEvent {
   final Cart cart;
+  final int quantity;
 
-  CartRemoveItemEvent(this.cart);
+  CartRemoveItemEvent(this.cart, this.quantity);
 }

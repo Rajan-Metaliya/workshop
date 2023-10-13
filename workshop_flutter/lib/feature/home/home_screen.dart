@@ -40,9 +40,9 @@ class HomeScreen extends StatelessWidget {
                   final product = state.products[index];
                   return ProductWidget(
                       product: product,
-                      addToCart: () {
+                      addToCart: (value) {
                         context.read<ProductBloc>().add(
-                              ProductAddToCartEvent(product),
+                              ProductAddToCartEvent(product, value),
                             );
                       });
                 },

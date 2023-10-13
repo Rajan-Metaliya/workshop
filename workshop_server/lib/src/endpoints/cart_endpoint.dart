@@ -7,6 +7,28 @@ class CartEndpoint extends Endpoint {
   // add to cart
   Future<bool> addToCart(Session session, Cart cart) async {
     try {
+      // check if item already exists
+      final existingCart = await Cart.findSingleRow(
+        session,
+        where: (t) =>
+            t.userId.equals(cart.userId) & t.productId.equals(cart.productId),
+      );
+
+      if (existingCart != null && existingCart.quantity > 1) {
+        // update quantity
+        existingCart.quantity = cart.quantity;
+        await Cart.update(session, existingCart);
+        return true;
+      }  else if (existingCart != null && existingCart.quantity == 1) {
+        // delete cart
+        await Cart.delete(
+          session,
+          where: (p0) => p0.id.equals(existingCart.id),
+        );
+        return true;
+      }
+
+
       await Cart.insert(session, cart);
       return true;
     } catch (e) {

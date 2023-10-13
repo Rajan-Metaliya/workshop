@@ -65,6 +65,7 @@ class Product extends _i1.TableRow {
       'image': image,
       'description': description,
       'price': price,
+      'cartQty': cartQty,
     };
   }
 

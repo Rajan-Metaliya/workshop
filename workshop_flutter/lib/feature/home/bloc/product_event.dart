@@ -7,8 +7,9 @@ final class ProductFetchEvent extends ProductEvent {}
 
 final class ProductAddToCartEvent extends ProductEvent {
   final Product product;
+  final int quantity;
 
-  ProductAddToCartEvent(this.product);
+  ProductAddToCartEvent(this.product, this.quantity);
 }
 
 // add product_event

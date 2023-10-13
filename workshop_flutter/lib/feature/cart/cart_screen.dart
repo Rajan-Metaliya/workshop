@@ -28,9 +28,9 @@ class CartScreen extends StatelessWidget {
                   final cart = state.carts[index];
                   return CartWidget(
                       cart: cart,
-                      removeFromCart: () {
+                      removeFromCart: (value) {
                         context.read<CartBloc>().add(
-                              CartRemoveItemEvent(cart),
+                              CartRemoveItemEvent(cart, value),
                             );
                       });
                 },
