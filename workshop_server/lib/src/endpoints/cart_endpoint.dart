@@ -5,30 +5,26 @@ import '../generated/protocol.dart';
 
 class CartEndpoint extends Endpoint {
   // add to cart
-  Future<AppResponse> addToCart(Session session, Cart cart) async {
+  Future<bool> addToCart(Session session, Cart cart) async {
     try {
       await Cart.insert(session, cart);
-      return AppResponse.success("Product added to cart");
+      return true;
     } catch (e) {
-      return AppResponse.error(e.toString());
+      return false;
     }
   }
 
   // get cart
-  Future<AppResponse<List<Cart>>> getCart(Session session, int userId) async {
+  Future<List<Cart>> getCart(Session session, String userId) async {
     try {
       final cart = await Cart.find(
         session,
         where: (t) => t.userId.equals(userId),
       );
 
-      return AppResponse<List<Cart>>(
-        statusCode: 200,
-        data: cart,
-        message: "${cart.length} products found",
-      );
+      return cart;
     } catch (e) {
-      return AppResponse.error(e.toString());
+      throw Exception(e.toString());
     }
   }
 

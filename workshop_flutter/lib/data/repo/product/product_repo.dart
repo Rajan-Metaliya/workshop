@@ -4,5 +4,5 @@ abstract class ProductRepo {
   Future<List<Product>> getProductList();
   Future<void> addProduct(Product product);
   Future<void> updateProduct(Product product);
-  Future<void> deleteProduct(Product product);
+  Future<void> deleteProduct(int productId);
 }

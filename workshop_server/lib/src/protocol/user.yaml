@@ -1,7 +1,11 @@
 class: Users
 table: users
 fields:
+  user_id: String, unique
   name: String
-  email: String
-  password: String
+  email: String, unique
+  password: String?, database
   token: String
+indexes:
+  user_id_idx:
+    fields: user_id

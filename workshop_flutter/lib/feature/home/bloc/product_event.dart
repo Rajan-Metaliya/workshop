@@ -10,3 +10,9 @@ final class ProductAddToCartEvent extends ProductEvent {
 
   ProductAddToCartEvent(this.product);
 }
+
+// add product_event
+
+final class ProductAddProductEvent extends ProductEvent {
+  ProductAddProductEvent();
+}

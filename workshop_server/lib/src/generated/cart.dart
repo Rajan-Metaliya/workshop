@@ -11,6 +11,7 @@ import 'package:serverpod/serverpod.dart' as _i1;
 class Cart extends _i1.TableRow {
   Cart({
     int? id,
+    required this.cart_id,
     required this.userId,
     required this.productId,
     required this.productName,
@@ -24,10 +25,12 @@ class Cart extends _i1.TableRow {
   ) {
     return Cart(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
+      cart_id: serializationManager
+          .deserialize<String>(jsonSerialization['cart_id']),
       userId:
-          serializationManager.deserialize<int>(jsonSerialization['userId']),
-      productId:
-          serializationManager.deserialize<int>(jsonSerialization['productId']),
+          serializationManager.deserialize<String>(jsonSerialization['userId']),
+      productId: serializationManager
+          .deserialize<String>(jsonSerialization['productId']),
       productName: serializationManager
           .deserialize<String>(jsonSerialization['productName']),
       quantity:
@@ -39,9 +42,11 @@ class Cart extends _i1.TableRow {
 
   static final t = CartTable();
 
-  int userId;
+  String cart_id;
 
-  int productId;
+  String userId;
+
+  String productId;
 
   String productName;
 
@@ -56,6 +61,7 @@ class Cart extends _i1.TableRow {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'cart_id': cart_id,
       'userId': userId,
       'productId': productId,
       'productName': productName,
@@ -68,6 +74,7 @@ class Cart extends _i1.TableRow {
   Map<String, dynamic> toJsonForDatabase() {
     return {
       'id': id,
+      'cart_id': cart_id,
       'userId': userId,
       'productId': productId,
       'productName': productName,
@@ -80,6 +87,7 @@ class Cart extends _i1.TableRow {
   Map<String, dynamic> allToJson() {
     return {
       'id': id,
+      'cart_id': cart_id,
       'userId': userId,
       'productId': productId,
       'productName': productName,
@@ -96,6 +104,9 @@ class Cart extends _i1.TableRow {
     switch (columnName) {
       case 'id':
         id = value;
+        return;
+      case 'cart_id':
+        cart_id = value;
         return;
       case 'userId':
         userId = value;
@@ -236,9 +247,11 @@ class CartTable extends _i1.Table {
   /// the id will be null.
   final id = _i1.ColumnInt('id');
 
-  final userId = _i1.ColumnInt('userId');
+  final cart_id = _i1.ColumnString('cart_id');
 
-  final productId = _i1.ColumnInt('productId');
+  final userId = _i1.ColumnString('userId');
+
+  final productId = _i1.ColumnString('productId');
 
   final productName = _i1.ColumnString('productName');
 
@@ -249,6 +262,7 @@ class CartTable extends _i1.Table {
   @override
   List<_i1.Column> get columns => [
         id,
+        cart_id,
         userId,
         productId,
         productName,

@@ -24,10 +24,20 @@ class UserEndpoint extends Endpoint {
 
   Future<Users> addUser(Session session, Users user) async {
     try {
+      // Check if user already exists
+      Users? existingUser = await Users.findSingleRow(
+        session,
+        where: (t) => t.email.equals(user.email),
+      );
+
+      if (existingUser != null) {
+        throw Exception("User already exists");
+      }
+
       await Users.insert(session, user);
       return user;
     } catch (e) {
-        throw Exception(e.toString());
+      throw Exception(e.toString());
     }
   }
 
@@ -36,7 +46,7 @@ class UserEndpoint extends Endpoint {
       await Users.insert(session, user);
       return user;
     } catch (e) {
-     throw Exception(e.toString());
+      throw Exception(e.toString());
     }
   }
 }

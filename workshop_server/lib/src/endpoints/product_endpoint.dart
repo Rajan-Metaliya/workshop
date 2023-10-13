@@ -5,70 +5,65 @@ import 'package:workshop_server/src/generated/product.dart';
 class ProductEndpoint extends Endpoint {
   // getAll Products
 
-  Future<AppResponse<List<Product>>> getAllProducts(Session session) async {
+  Future<List<Product>> getAllProducts(Session session) async {
     try {
       final products = await Product.find(
         session,
         where: (t) => t.id >= 0,
       );
 
-      return AppResponse<List<Product>>(
-        statusCode: 200,
-        data: products,
-        message: "${products.length} products found",
-      );
+      return products;
     } catch (e) {
-      return AppResponse.error(e.toString());
+      throw Exception(e.toString());
     }
   }
 
-  Future<AppResponse<Product>> getProduct(Session session, int id) async {
+  Future<Product> getProduct(Session session, int id) async {
     try {
       final products = await Product.findById(
         session,
         id,
       );
 
-      return AppResponse<Product>(
-        statusCode: 200,
-        data: products,
-        message: "Products found",
-      );
+      if (products != null) {
+        return products;
+      }
+      throw Exception("Product not found");
     } catch (e) {
-      return AppResponse.error(e.toString());
+      throw AppResponse.error(e.toString());
     }
   }
 
   // add Product
-  Future<AppResponse> addProduct(Session session, Product product) async {
+  Future<bool> addProduct(Session session, Product product) async {
     try {
       await Product.insert(session, product);
-      return AppResponse.success("Product added");
+      return true;
     } catch (e) {
-      return AppResponse.error(e.toString());
+      return false;
     }
   }
 
   // update Product
-  Future<AppResponse> updateProduct(Session session, Product product) async {
+  Future<bool> updateProduct(Session session, Product product) async {
     try {
       await Product.update(session, product);
-      return AppResponse.success("Product updated");
+      return true;
     } catch (e) {
-      return AppResponse.error(e.toString());
+      return false;
     }
   }
 
   // delete Product
-  Future<AppResponse> deleteProduct(Session session, int id) async {
+  Future<bool> deleteProduct(Session session, int id) async {
     try {
       await Product.delete(
         session,
         where: (t) => t.id.equals(id),
       );
-      return AppResponse.success("Product deleted");
+      return true;
     } catch (e) {
-      return AppResponse.error(e.toString());
+      return false;
     }
   }
 }

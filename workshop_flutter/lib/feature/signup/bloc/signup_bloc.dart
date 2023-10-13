@@ -1,8 +1,10 @@
 import 'package:bloc/bloc.dart';
+import 'package:faker/faker.dart';
 import 'package:meta/meta.dart';
 import 'package:workshop_client/workshop_client.dart';
 
 import '../../../data/repo/repo.dart';
+import '../../../data/service/service.dart';
 import '../../../utils/exceptions/exceptions.dart';
 
 part 'signup_event.dart';
@@ -16,13 +18,14 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
       try {
         final user = await userRepo.register(
           Users(
-              name: event.username,
-              email: event.email,
-              password: event.password,
-              token: ""),
+            user_id: Faker().guid.guid(),
+            name: event.username,
+            email: event.email,
+            token: "",
+          ),
         );
         if (user != null) {
-          emit(SignupSuccessState());
+          await authService.setUser(user);
         } else {
           emit(SignupErrorState("Unable to create user"));
         }

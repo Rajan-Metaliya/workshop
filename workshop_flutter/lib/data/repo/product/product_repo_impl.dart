@@ -1,43 +1,45 @@
 import 'package:workshop_client/workshop_client.dart';
 
+import '../../../utils/exceptions/exceptions.dart';
+import '../../service/service.dart';
 import 'product_repo.dart';
 
 class ProductRepoImpl extends ProductRepo {
-  final List<Product> _productList = List.generate(
-    20,
-    (index) => Product(
-      name: "Product $index",
-      image: "https://picsum.photos/200/300",
-      description: "Description $index " * 10,
-      price: 10.0 * index,
-    ),
-  );
-
   @override
   Future<void> addProduct(Product product) async {
-    // await Future.delayed(const Duration(milliseconds: 500));
-
-    _productList.add(product.copyWith(id: _productList.length));
+    try {
+      await apiServer.client.product.addProduct(product);
+    } catch (e) {
+      throw RepoException(message: "Failed to add product");
+    }
   }
 
   @override
-  Future<void> deleteProduct(Product product) async {
-    // await Future.delayed(const Duration(milliseconds: 500));
-
-    _productList.add(product.copyWith(id: _productList.length));
+  Future<void> deleteProduct(int productId) async {
+    try {
+      await apiServer.client.product.deleteProduct(productId);
+    } catch (e) {
+      throw RepoException(message: "Failed to add product");
+    }
   }
 
   @override
   Future<List<Product>> getProductList() async {
-    // await Future.delayed(const Duration(milliseconds: 500));
-    return _productList;
+    try {
+      final products = await apiServer.client.product.getAllProducts();
+
+      return products;
+    } catch (e) {
+      throw RepoException(message: "Failed to add product");
+    }
   }
 
   @override
   Future<void> updateProduct(Product product) async {
-    // await Future.delayed(const Duration(milliseconds: 500));
-    final index =
-        _productList.indexWhere((element) => element.id == product.id);
-    _productList[index] = product;
+    try {
+      await apiServer.client.product.updateProduct(product);
+    } catch (e) {
+      throw RepoException(message: "Failed to add product");
+    }
   }
 }

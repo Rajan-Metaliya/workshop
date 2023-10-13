@@ -12,6 +12,8 @@ import 'cart.dart' as _i2;
 import 'example.dart' as _i3;
 import 'product.dart' as _i4;
 import 'user.dart' as _i5;
+import 'package:workshop_client/src/protocol/cart.dart' as _i6;
+import 'package:workshop_client/src/protocol/product.dart' as _i7;
 export 'cart.dart';
 export 'example.dart';
 export 'product.dart';
@@ -59,6 +61,14 @@ class Protocol extends _i1.SerializationManager {
     }
     if (t == _i1.getType<_i5.Users?>()) {
       return (data != null ? _i5.Users.fromJson(data, this) : null) as T;
+    }
+    if (t == List<_i6.Cart>) {
+      return (data as List).map((e) => deserialize<_i6.Cart>(e)).toList()
+          as dynamic;
+    }
+    if (t == List<_i7.Product>) {
+      return (data as List).map((e) => deserialize<_i7.Product>(e)).toList()
+          as dynamic;
     }
     return super.deserialize<T>(data, t);
   }

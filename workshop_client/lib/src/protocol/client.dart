@@ -8,8 +8,8 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 import 'dart:async' as _i2;
-import 'package:workshop_client/src/response/response.dart' as _i3;
-import 'package:workshop_client/src/protocol/cart.dart' as _i4;
+import 'package:workshop_client/src/protocol/cart.dart' as _i3;
+import 'package:workshop_client/src/response/response.dart' as _i4;
 import 'package:workshop_client/src/protocol/product.dart' as _i5;
 import 'package:workshop_client/src/protocol/user.dart' as _i6;
 import 'dart:io' as _i7;
@@ -21,29 +21,28 @@ class _EndpointCart extends _i1.EndpointRef {
   @override
   String get name => 'cart';
 
-  _i2.Future<_i3.AppResponse<dynamic>> addToCart(_i4.Cart cart) =>
-      caller.callServerEndpoint<_i3.AppResponse<dynamic>>(
+  _i2.Future<bool> addToCart(_i3.Cart cart) => caller.callServerEndpoint<bool>(
         'cart',
         'addToCart',
         {'cart': cart},
       );
 
-  _i2.Future<_i3.AppResponse<List<_i4.Cart>>> getCart(int userId) =>
-      caller.callServerEndpoint<_i3.AppResponse<List<_i4.Cart>>>(
+  _i2.Future<List<_i3.Cart>> getCart(int userId) =>
+      caller.callServerEndpoint<List<_i3.Cart>>(
         'cart',
         'getCart',
         {'userId': userId},
       );
 
-  _i2.Future<_i3.AppResponse<dynamic>> updateCart(_i4.Cart cart) =>
-      caller.callServerEndpoint<_i3.AppResponse<dynamic>>(
+  _i2.Future<_i4.AppResponse<dynamic>> updateCart(_i3.Cart cart) =>
+      caller.callServerEndpoint<_i4.AppResponse<dynamic>>(
         'cart',
         'updateCart',
         {'cart': cart},
       );
 
-  _i2.Future<_i3.AppResponse<dynamic>> deleteCart(int id) =>
-      caller.callServerEndpoint<_i3.AppResponse<dynamic>>(
+  _i2.Future<_i4.AppResponse<dynamic>> deleteCart(int id) =>
+      caller.callServerEndpoint<_i4.AppResponse<dynamic>>(
         'cart',
         'deleteCart',
         {'id': id},
@@ -69,36 +68,35 @@ class _EndpointProduct extends _i1.EndpointRef {
   @override
   String get name => 'product';
 
-  _i2.Future<_i3.AppResponse<List<_i5.Product>>> getAllProducts() =>
-      caller.callServerEndpoint<_i3.AppResponse<List<_i5.Product>>>(
+  _i2.Future<List<_i5.Product>> getAllProducts() =>
+      caller.callServerEndpoint<List<_i5.Product>>(
         'product',
         'getAllProducts',
         {},
       );
 
-  _i2.Future<_i3.AppResponse<_i5.Product>> getProduct(int id) =>
-      caller.callServerEndpoint<_i3.AppResponse<_i5.Product>>(
+  _i2.Future<_i5.Product> getProduct(int id) =>
+      caller.callServerEndpoint<_i5.Product>(
         'product',
         'getProduct',
         {'id': id},
       );
 
-  _i2.Future<_i3.AppResponse<dynamic>> addProduct(_i5.Product product) =>
-      caller.callServerEndpoint<_i3.AppResponse<dynamic>>(
+  _i2.Future<bool> addProduct(_i5.Product product) =>
+      caller.callServerEndpoint<bool>(
         'product',
         'addProduct',
         {'product': product},
       );
 
-  _i2.Future<_i3.AppResponse<dynamic>> updateProduct(_i5.Product product) =>
-      caller.callServerEndpoint<_i3.AppResponse<dynamic>>(
+  _i2.Future<bool> updateProduct(_i5.Product product) =>
+      caller.callServerEndpoint<bool>(
         'product',
         'updateProduct',
         {'product': product},
       );
 
-  _i2.Future<_i3.AppResponse<dynamic>> deleteProduct(int id) =>
-      caller.callServerEndpoint<_i3.AppResponse<dynamic>>(
+  _i2.Future<bool> deleteProduct(int id) => caller.callServerEndpoint<bool>(
         'product',
         'deleteProduct',
         {'id': id},

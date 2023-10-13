@@ -11,9 +11,9 @@ import 'package:serverpod_client/serverpod_client.dart' as _i1;
 class Users extends _i1.SerializableEntity {
   Users({
     this.id,
+    required this.user_id,
     required this.name,
     required this.email,
-    required this.password,
     required this.token,
   });
 
@@ -23,11 +23,11 @@ class Users extends _i1.SerializableEntity {
   ) {
     return Users(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
+      user_id: serializationManager
+          .deserialize<String>(jsonSerialization['user_id']),
       name: serializationManager.deserialize<String>(jsonSerialization['name']),
       email:
           serializationManager.deserialize<String>(jsonSerialization['email']),
-      password: serializationManager
-          .deserialize<String>(jsonSerialization['password']),
       token:
           serializationManager.deserialize<String>(jsonSerialization['token']),
     );
@@ -38,11 +38,11 @@ class Users extends _i1.SerializableEntity {
   /// the id will be null.
   int? id;
 
+  String user_id;
+
   String name;
 
   String email;
-
-  String password;
 
   String token;
 
@@ -50,9 +50,9 @@ class Users extends _i1.SerializableEntity {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'user_id': user_id,
       'name': name,
       'email': email,
-      'password': password,
       'token': token,
     };
   }

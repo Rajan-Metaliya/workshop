@@ -55,6 +55,10 @@ class HomeScreen extends StatelessWidget {
             return Container();
           },
         ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: const Icon(Icons.add),
+        ),
       ),
     );
   }

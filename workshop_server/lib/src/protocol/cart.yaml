@@ -1,8 +1,12 @@
 class: Cart
 table: cart
 fields:
-  userId: int
-  productId: int
+  cart_id: String, unique
+  userId: String
+  productId: String
   productName: String
   quantity: int
   totalAmount: double
+indexes:
+  cart_id_idx:
+    fields: cart_id

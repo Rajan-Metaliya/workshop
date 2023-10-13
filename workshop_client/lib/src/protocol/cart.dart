@@ -11,6 +11,7 @@ import 'package:serverpod_client/serverpod_client.dart' as _i1;
 class Cart extends _i1.SerializableEntity {
   Cart({
     this.id,
+    required this.cart_id,
     required this.userId,
     required this.productId,
     required this.productName,
@@ -24,10 +25,12 @@ class Cart extends _i1.SerializableEntity {
   ) {
     return Cart(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
+      cart_id: serializationManager
+          .deserialize<String>(jsonSerialization['cart_id']),
       userId:
-          serializationManager.deserialize<int>(jsonSerialization['userId']),
-      productId:
-          serializationManager.deserialize<int>(jsonSerialization['productId']),
+          serializationManager.deserialize<String>(jsonSerialization['userId']),
+      productId: serializationManager
+          .deserialize<String>(jsonSerialization['productId']),
       productName: serializationManager
           .deserialize<String>(jsonSerialization['productName']),
       quantity:
@@ -42,9 +45,11 @@ class Cart extends _i1.SerializableEntity {
   /// the id will be null.
   int? id;
 
-  int userId;
+  String cart_id;
 
-  int productId;
+  String userId;
+
+  String productId;
 
   String productName;
 
@@ -56,30 +61,12 @@ class Cart extends _i1.SerializableEntity {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'cart_id': cart_id,
       'userId': userId,
       'productId': productId,
       'productName': productName,
       'quantity': quantity,
       'totalAmount': totalAmount,
     };
-  }
-
-  // copyWith
-  Cart copyWith({
-    int? id,
-    int? userId,
-    int? productId,
-    String? productName,
-    int? quantity,
-    double? totalAmount,
-  }) {
-    return Cart(
-      id: id ?? this.id,
-      userId: userId ?? this.userId,
-      productId: productId ?? this.productId,
-      productName: productName ?? this.productName,
-      quantity: quantity ?? this.quantity,
-      totalAmount: totalAmount ?? this.totalAmount,
-    );
   }
 }

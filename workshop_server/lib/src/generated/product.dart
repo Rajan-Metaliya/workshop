@@ -11,6 +11,7 @@ import 'package:serverpod/serverpod.dart' as _i1;
 class Product extends _i1.TableRow {
   Product({
     int? id,
+    required this.product_id,
     required this.name,
     required this.image,
     required this.description,
@@ -23,6 +24,8 @@ class Product extends _i1.TableRow {
   ) {
     return Product(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
+      product_id: serializationManager
+          .deserialize<String>(jsonSerialization['product_id']),
       name: serializationManager.deserialize<String>(jsonSerialization['name']),
       image:
           serializationManager.deserialize<String>(jsonSerialization['image']),
@@ -34,6 +37,8 @@ class Product extends _i1.TableRow {
   }
 
   static final t = ProductTable();
+
+  String product_id;
 
   String name;
 
@@ -50,6 +55,7 @@ class Product extends _i1.TableRow {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'product_id': product_id,
       'name': name,
       'image': image,
       'description': description,
@@ -61,6 +67,7 @@ class Product extends _i1.TableRow {
   Map<String, dynamic> toJsonForDatabase() {
     return {
       'id': id,
+      'product_id': product_id,
       'name': name,
       'image': image,
       'description': description,
@@ -72,6 +79,7 @@ class Product extends _i1.TableRow {
   Map<String, dynamic> allToJson() {
     return {
       'id': id,
+      'product_id': product_id,
       'name': name,
       'image': image,
       'description': description,
@@ -87,6 +95,9 @@ class Product extends _i1.TableRow {
     switch (columnName) {
       case 'id':
         id = value;
+        return;
+      case 'product_id':
+        product_id = value;
         return;
       case 'name':
         name = value;
@@ -224,6 +235,8 @@ class ProductTable extends _i1.Table {
   /// the id will be null.
   final id = _i1.ColumnInt('id');
 
+  final product_id = _i1.ColumnString('product_id');
+
   final name = _i1.ColumnString('name');
 
   final image = _i1.ColumnString('image');
@@ -235,6 +248,7 @@ class ProductTable extends _i1.Table {
   @override
   List<_i1.Column> get columns => [
         id,
+        product_id,
         name,
         image,
         description,

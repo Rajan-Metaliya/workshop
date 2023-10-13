@@ -11,9 +11,10 @@ import 'package:serverpod/serverpod.dart' as _i1;
 class Users extends _i1.TableRow {
   Users({
     int? id,
+    required this.user_id,
     required this.name,
     required this.email,
-    required this.password,
+    this.password,
     required this.token,
   }) : super(id);
 
@@ -23,11 +24,13 @@ class Users extends _i1.TableRow {
   ) {
     return Users(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
+      user_id: serializationManager
+          .deserialize<String>(jsonSerialization['user_id']),
       name: serializationManager.deserialize<String>(jsonSerialization['name']),
       email:
           serializationManager.deserialize<String>(jsonSerialization['email']),
       password: serializationManager
-          .deserialize<String>(jsonSerialization['password']),
+          .deserialize<String?>(jsonSerialization['password']),
       token:
           serializationManager.deserialize<String>(jsonSerialization['token']),
     );
@@ -35,11 +38,13 @@ class Users extends _i1.TableRow {
 
   static final t = UsersTable();
 
+  String user_id;
+
   String name;
 
   String email;
 
-  String password;
+  String? password;
 
   String token;
 
@@ -50,9 +55,9 @@ class Users extends _i1.TableRow {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'user_id': user_id,
       'name': name,
       'email': email,
-      'password': password,
       'token': token,
     };
   }
@@ -61,6 +66,7 @@ class Users extends _i1.TableRow {
   Map<String, dynamic> toJsonForDatabase() {
     return {
       'id': id,
+      'user_id': user_id,
       'name': name,
       'email': email,
       'password': password,
@@ -72,6 +78,7 @@ class Users extends _i1.TableRow {
   Map<String, dynamic> allToJson() {
     return {
       'id': id,
+      'user_id': user_id,
       'name': name,
       'email': email,
       'password': password,
@@ -87,6 +94,9 @@ class Users extends _i1.TableRow {
     switch (columnName) {
       case 'id':
         id = value;
+        return;
+      case 'user_id':
+        user_id = value;
         return;
       case 'name':
         name = value;
@@ -224,6 +234,8 @@ class UsersTable extends _i1.Table {
   /// the id will be null.
   final id = _i1.ColumnInt('id');
 
+  final user_id = _i1.ColumnString('user_id');
+
   final name = _i1.ColumnString('name');
 
   final email = _i1.ColumnString('email');
@@ -235,6 +247,7 @@ class UsersTable extends _i1.Table {
   @override
   List<_i1.Column> get columns => [
         id,
+        user_id,
         name,
         email,
         password,
