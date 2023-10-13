@@ -11,7 +11,7 @@ import 'package:serverpod/serverpod.dart' as _i1;
 class Product extends _i1.TableRow {
   Product({
     int? id,
-    required this.product_id,
+    required this.productId,
     required this.name,
     required this.image,
     required this.description,
@@ -24,8 +24,8 @@ class Product extends _i1.TableRow {
   ) {
     return Product(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
-      product_id: serializationManager
-          .deserialize<String>(jsonSerialization['product_id']),
+      productId: serializationManager
+          .deserialize<String>(jsonSerialization['productId']),
       name: serializationManager.deserialize<String>(jsonSerialization['name']),
       image:
           serializationManager.deserialize<String>(jsonSerialization['image']),
@@ -38,7 +38,7 @@ class Product extends _i1.TableRow {
 
   static final t = ProductTable();
 
-  String product_id;
+  String productId;
 
   String name;
 
@@ -55,7 +55,7 @@ class Product extends _i1.TableRow {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'product_id': product_id,
+      'productId': productId,
       'name': name,
       'image': image,
       'description': description,
@@ -67,7 +67,7 @@ class Product extends _i1.TableRow {
   Map<String, dynamic> toJsonForDatabase() {
     return {
       'id': id,
-      'product_id': product_id,
+      'productId': productId,
       'name': name,
       'image': image,
       'description': description,
@@ -79,7 +79,7 @@ class Product extends _i1.TableRow {
   Map<String, dynamic> allToJson() {
     return {
       'id': id,
-      'product_id': product_id,
+      'productId': productId,
       'name': name,
       'image': image,
       'description': description,
@@ -96,8 +96,8 @@ class Product extends _i1.TableRow {
       case 'id':
         id = value;
         return;
-      case 'product_id':
-        product_id = value;
+      case 'productId':
+        productId = value;
         return;
       case 'name':
         name = value;
@@ -235,7 +235,7 @@ class ProductTable extends _i1.Table {
   /// the id will be null.
   final id = _i1.ColumnInt('id');
 
-  final product_id = _i1.ColumnString('product_id');
+  final productId = _i1.ColumnString('productId');
 
   final name = _i1.ColumnString('name');
 
@@ -248,7 +248,7 @@ class ProductTable extends _i1.Table {
   @override
   List<_i1.Column> get columns => [
         id,
-        product_id,
+        productId,
         name,
         image,
         description,

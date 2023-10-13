@@ -11,7 +11,7 @@ import 'package:serverpod_client/serverpod_client.dart' as _i1;
 class Product extends _i1.SerializableEntity {
   Product({
     this.id,
-    required this.product_id,
+    required this.productId,
     required this.name,
     required this.image,
     required this.description,
@@ -24,8 +24,8 @@ class Product extends _i1.SerializableEntity {
   ) {
     return Product(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
-      product_id: serializationManager
-          .deserialize<String>(jsonSerialization['product_id']),
+      productId: serializationManager
+          .deserialize<String>(jsonSerialization['productId']),
       name: serializationManager.deserialize<String>(jsonSerialization['name']),
       image:
           serializationManager.deserialize<String>(jsonSerialization['image']),
@@ -41,7 +41,7 @@ class Product extends _i1.SerializableEntity {
   /// the id will be null.
   int? id;
 
-  String product_id;
+  String productId;
 
   String name;
 
@@ -55,7 +55,7 @@ class Product extends _i1.SerializableEntity {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'product_id': product_id,
+      'productId': productId,
       'name': name,
       'image': image,
       'description': description,

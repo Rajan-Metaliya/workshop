@@ -42,7 +42,7 @@ class Protocol extends _i1.SerializationManagerServer {
           columnDefault: 'nextval(\'cart_id_seq\'::regclass)',
         ),
         _i2.ColumnDefinition(
-          name: 'cart_id',
+          name: 'cartId',
           columnType: _i2.ColumnType.text,
           isNullable: false,
           dartType: 'String',
@@ -99,7 +99,7 @@ class Protocol extends _i1.SerializationManagerServer {
           elements: [
             _i2.IndexElementDefinition(
               type: _i2.IndexElementDefinitionType.column,
-              definition: 'cart_id',
+              definition: 'cartId',
             )
           ],
           type: 'btree',
@@ -121,7 +121,7 @@ class Protocol extends _i1.SerializationManagerServer {
           columnDefault: 'nextval(\'product_id_seq\'::regclass)',
         ),
         _i2.ColumnDefinition(
-          name: 'product_id',
+          name: 'productId',
           columnType: _i2.ColumnType.text,
           isNullable: false,
           dartType: 'String',
@@ -172,7 +172,7 @@ class Protocol extends _i1.SerializationManagerServer {
           elements: [
             _i2.IndexElementDefinition(
               type: _i2.IndexElementDefinitionType.column,
-              definition: 'product_id',
+              definition: 'productId',
             )
           ],
           type: 'btree',
@@ -194,7 +194,7 @@ class Protocol extends _i1.SerializationManagerServer {
           columnDefault: 'nextval(\'users_id_seq\'::regclass)',
         ),
         _i2.ColumnDefinition(
-          name: 'user_id',
+          name: 'userId',
           columnType: _i2.ColumnType.text,
           isNullable: false,
           dartType: 'String',
@@ -245,7 +245,7 @@ class Protocol extends _i1.SerializationManagerServer {
           elements: [
             _i2.IndexElementDefinition(
               type: _i2.IndexElementDefinitionType.column,
-              definition: 'user_id',
+              definition: 'userId',
             )
           ],
           type: 'btree',

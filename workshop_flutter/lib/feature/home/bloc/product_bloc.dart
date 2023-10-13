@@ -28,9 +28,9 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       try {
         EasyLoading.show(status: 'Adding item to cart');
         var cartItem = Cart(
-          cart_id: Faker().guid.guid(),
-          userId: authService.user.user_id,
-          productId: event.product.product_id,
+          cartId: Faker().guid.guid(),
+          userId: authService.user.userId,
+          productId: event.product.productId,
           productName: event.product.name,
           quantity: 1,
           totalAmount: event.product.price,
@@ -51,7 +51,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       try {
         EasyLoading.show(status: 'Adding item to cart');
         var product = Product(
-          product_id: Faker().guid.guid(),
+          productId: Faker().guid.guid(),
           name: faker.company.person.name(),
           price: faker.randomGenerator.decimal(scale: 2, min: 1),
           description: faker.lorem.sentence(),

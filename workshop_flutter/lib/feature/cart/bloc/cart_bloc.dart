@@ -13,7 +13,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<CartFetchEvent>((event, emit) async {
       emit(CartLoadingState());
       try {
-        final carts = await cartRepo.getCartList(authService.user.user_id);
+        final carts = await cartRepo.getCartList(authService.user.userId);
         emit(CartLoadedState(carts));
       } catch (e) {
         emit(CartErrorState(e.toString()));

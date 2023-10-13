@@ -18,7 +18,7 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
       try {
         final user = await userRepo.register(
           Users(
-              user_id: Faker().guid.guid(),
+              userId: Faker().guid.guid(),
               name: event.username,
               email: event.email,
               token: "",

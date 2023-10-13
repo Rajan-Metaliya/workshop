@@ -1,11 +1,11 @@
 class: Product
 table: product
 fields:
-  product_id: String, unique
+  productId: String, unique
   name: String
   image: String
   description: String
   price: double
 indexes:
   product_id_idx:
-    fields: product_id
+    fields: productId

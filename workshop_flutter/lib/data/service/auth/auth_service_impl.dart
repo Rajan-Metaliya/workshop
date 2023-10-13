@@ -4,7 +4,7 @@ import 'auth_service.dart';
 
 class AuthServiceImpl extends AuthService {
   Users _user =
-      Users(email: '', name: '', id: 0, token: '', user_id: '', password: '');
+      Users(email: '', name: '', id: 0, token: '', userId: '', password: '');
 
   @override
   Users get user => _user;
@@ -12,7 +12,7 @@ class AuthServiceImpl extends AuthService {
   @override
   Future<void> removeUser() async {
     _user =
-        Users(email: '', name: '', id: 0, token: '', user_id: '', password: '');
+        Users(email: '', name: '', id: 0, token: '', userId: '', password: '');
   }
 
   @override

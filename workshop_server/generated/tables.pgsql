@@ -4,7 +4,7 @@
 
 CREATE TABLE "cart" (
   "id" serial,
-  "cart_id" text NOT NULL,
+  "cartId" text NOT NULL,
   "userId" text NOT NULL,
   "productId" text NOT NULL,
   "productName" text NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE "cart" (
 ALTER TABLE ONLY "cart"
   ADD CONSTRAINT cart_pkey PRIMARY KEY (id);
 
-CREATE INDEX cart_id_idx ON "cart" USING btree ("cart_id");
+CREATE INDEX cart_id_idx ON "cart" USING btree ("cartId");
 
 
 --
@@ -24,7 +24,7 @@ CREATE INDEX cart_id_idx ON "cart" USING btree ("cart_id");
 
 CREATE TABLE "product" (
   "id" serial,
-  "product_id" text NOT NULL,
+  "productId" text NOT NULL,
   "name" text NOT NULL,
   "image" text NOT NULL,
   "description" text NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE "product" (
 ALTER TABLE ONLY "product"
   ADD CONSTRAINT product_pkey PRIMARY KEY (id);
 
-CREATE INDEX product_id_idx ON "product" USING btree ("product_id");
+CREATE INDEX product_id_idx ON "product" USING btree ("productId");
 
 
 --
@@ -43,7 +43,7 @@ CREATE INDEX product_id_idx ON "product" USING btree ("product_id");
 
 CREATE TABLE "users" (
   "id" serial,
-  "user_id" text NOT NULL,
+  "userId" text NOT NULL,
   "name" text NOT NULL,
   "email" text NOT NULL,
   "password" text NOT NULL,
@@ -53,6 +53,6 @@ CREATE TABLE "users" (
 ALTER TABLE ONLY "users"
   ADD CONSTRAINT users_pkey PRIMARY KEY (id);
 
-CREATE INDEX user_id_idx ON "users" USING btree ("user_id");
+CREATE INDEX user_id_idx ON "users" USING btree ("userId");
 
 

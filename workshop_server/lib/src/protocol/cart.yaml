@@ -1,7 +1,7 @@
 class: Cart
 table: cart
 fields:
-  cart_id: String, unique
+  cartId: String, unique
   userId: String
   productId: String
   productName: String
@@ -9,4 +9,4 @@ fields:
   totalAmount: double
 indexes:
   cart_id_idx:
-    fields: cart_id
+    fields: cartId
