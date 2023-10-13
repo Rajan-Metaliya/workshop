@@ -46,7 +46,7 @@ CREATE TABLE "users" (
   "user_id" text NOT NULL,
   "name" text NOT NULL,
   "email" text NOT NULL,
-  "password" text,
+  "password" text NOT NULL,
   "token" text NOT NULL
 );
 

@@ -14,6 +14,7 @@ class Users extends _i1.SerializableEntity {
     required this.user_id,
     required this.name,
     required this.email,
+    required this.password,
     required this.token,
   });
 
@@ -28,6 +29,8 @@ class Users extends _i1.SerializableEntity {
       name: serializationManager.deserialize<String>(jsonSerialization['name']),
       email:
           serializationManager.deserialize<String>(jsonSerialization['email']),
+      password: serializationManager
+          .deserialize<String>(jsonSerialization['password']),
       token:
           serializationManager.deserialize<String>(jsonSerialization['token']),
     );
@@ -44,6 +47,8 @@ class Users extends _i1.SerializableEntity {
 
   String email;
 
+  String password;
+
   String token;
 
   @override
@@ -53,6 +58,7 @@ class Users extends _i1.SerializableEntity {
       'user_id': user_id,
       'name': name,
       'email': email,
+      'password': password,
       'token': token,
     };
   }

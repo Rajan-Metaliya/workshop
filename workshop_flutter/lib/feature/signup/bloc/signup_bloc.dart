@@ -18,11 +18,11 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
       try {
         final user = await userRepo.register(
           Users(
-            user_id: Faker().guid.guid(),
-            name: event.username,
-            email: event.email,
-            token: "",
-          ),
+              user_id: Faker().guid.guid(),
+              name: event.username,
+              email: event.email,
+              token: "",
+              password: event.password),
         );
         if (user != null) {
           await authService.setUser(user);

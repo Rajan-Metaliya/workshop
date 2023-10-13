@@ -4,7 +4,7 @@ fields:
   user_id: String, unique
   name: String
   email: String, unique
-  password: String?, database
+  password: String
   token: String
 indexes:
   user_id_idx:

@@ -14,7 +14,7 @@ class Users extends _i1.TableRow {
     required this.user_id,
     required this.name,
     required this.email,
-    this.password,
+    required this.password,
     required this.token,
   }) : super(id);
 
@@ -30,7 +30,7 @@ class Users extends _i1.TableRow {
       email:
           serializationManager.deserialize<String>(jsonSerialization['email']),
       password: serializationManager
-          .deserialize<String?>(jsonSerialization['password']),
+          .deserialize<String>(jsonSerialization['password']),
       token:
           serializationManager.deserialize<String>(jsonSerialization['token']),
     );
@@ -44,7 +44,7 @@ class Users extends _i1.TableRow {
 
   String email;
 
-  String? password;
+  String password;
 
   String token;
 
@@ -58,6 +58,7 @@ class Users extends _i1.TableRow {
       'user_id': user_id,
       'name': name,
       'email': email,
+      'password': password,
       'token': token,
     };
   }

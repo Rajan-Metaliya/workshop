@@ -27,7 +27,7 @@ class _EndpointCart extends _i1.EndpointRef {
         {'cart': cart},
       );
 
-  _i2.Future<List<_i3.Cart>> getCart(int userId) =>
+  _i2.Future<List<_i3.Cart>> getCart(String userId) =>
       caller.callServerEndpoint<List<_i3.Cart>>(
         'cart',
         'getCart',

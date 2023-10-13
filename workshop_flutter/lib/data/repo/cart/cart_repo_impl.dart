@@ -5,8 +5,6 @@ import '../../service/service.dart';
 import 'cart_repo.dart';
 
 class CartRepoImpl extends CartRepo {
-  final List<Cart> _cartList = <Cart>[];
-
   @override
   Future<void> addCart(Cart cart) async {
     try {
@@ -26,7 +24,7 @@ class CartRepoImpl extends CartRepo {
   }
 
   @override
-  Future<List<Cart>> getCartList(int userId) async {
+  Future<List<Cart>> getCartList(String userId) async {
     try {
       final carts = await apiServer.client.cart.getCart(userId);
 
