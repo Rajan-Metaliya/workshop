@@ -11,10 +11,15 @@ part 'cart_state.dart';
 class CartBloc extends Bloc<CartEvent, CartState> {
   CartBloc() : super(CartInitialState()) {
     on<CartFetchEvent>((event, emit) async {
-      emit(CartLoadingState());
+      if (!event.isRefresh) {
+        emit(CartLoadingState());
+      }
       try {
         final carts = await cartRepo.getCartList(authService.user.userId);
-        emit(CartLoadedState(carts));
+
+        final totalPrice = carts.fold<double>(
+            0, (previousValue, element) => previousValue + element.totalAmount);
+        emit(CartLoadedState(carts, totalPrice));
       } catch (e) {
         emit(CartErrorState(e.toString()));
       }

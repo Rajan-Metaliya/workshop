@@ -9,8 +9,9 @@ class CartLoadingState extends CartState {}
 
 class CartLoadedState extends CartState {
   final List<Cart> carts;
+  final double totalPrice;
 
-  CartLoadedState(this.carts);
+  CartLoadedState(this.carts, this.totalPrice);
 }
 
 class CartErrorState extends CartState {

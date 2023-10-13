@@ -5,7 +5,11 @@ sealed class CartEvent {}
 
 // fetch event
 
-class CartFetchEvent extends CartEvent {}
+class CartFetchEvent extends CartEvent {
+  final bool isRefresh;
+
+  CartFetchEvent({this.isRefresh = false});
+}
 
 class CartRemoveItemEvent extends CartEvent {
   final Cart cart;

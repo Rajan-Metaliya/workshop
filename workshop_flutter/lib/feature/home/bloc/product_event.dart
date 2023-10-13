@@ -3,7 +3,11 @@ part of 'product_bloc.dart';
 @immutable
 sealed class ProductEvent {}
 
-final class ProductFetchEvent extends ProductEvent {}
+final class ProductFetchEvent extends ProductEvent {
+  final bool isRefresh;
+
+  ProductFetchEvent({this.isRefresh = false});
+}
 
 final class ProductAddToCartEvent extends ProductEvent {
   final Product product;

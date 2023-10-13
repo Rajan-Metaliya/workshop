@@ -38,7 +38,9 @@ class HomeScreen extends StatelessWidget {
               if (state is ProductLoadedState) {
                 return LiquidPullToRefresh(
                   onRefresh: () async {
-                    context.read<ProductBloc>().add(ProductFetchEvent());
+                    context
+                        .read<ProductBloc>()
+                        .add(ProductFetchEvent(isRefresh: true));
                   },
                   child: ListView.builder(
                     itemCount: state.products.length,

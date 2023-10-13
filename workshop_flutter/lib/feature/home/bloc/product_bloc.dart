@@ -13,7 +13,10 @@ part 'product_state.dart';
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
   ProductBloc() : super(ProductInitialState()) {
     on<ProductFetchEvent>((event, emit) async {
-      emit(ProductLoadingState());
+      if (!event.isRefresh) {
+        emit(ProductLoadingState());
+      }
+
       try {
         final products =
             await productRepo.getProductList(authService.user.userId);
