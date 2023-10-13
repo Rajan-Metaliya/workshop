@@ -37,7 +37,8 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           productId: event.product.productId,
           productName: event.product.name,
           quantity: event.quantity,
-          totalAmount: event.product.price,
+          productAmount: event.product.price,
+          totalAmount: event.product.price * event.quantity,
         );
 
         await cartRepo.addCart(cartItem);

@@ -16,6 +16,7 @@ class Cart extends _i1.TableRow {
     required this.productId,
     required this.productName,
     required this.quantity,
+    required this.productAmount,
     required this.totalAmount,
   }) : super(id);
 
@@ -35,6 +36,8 @@ class Cart extends _i1.TableRow {
           .deserialize<String>(jsonSerialization['productName']),
       quantity:
           serializationManager.deserialize<int>(jsonSerialization['quantity']),
+      productAmount: serializationManager
+          .deserialize<double>(jsonSerialization['productAmount']),
       totalAmount: serializationManager
           .deserialize<double>(jsonSerialization['totalAmount']),
     );
@@ -52,6 +55,8 @@ class Cart extends _i1.TableRow {
 
   int quantity;
 
+  double productAmount;
+
   double totalAmount;
 
   @override
@@ -66,6 +71,7 @@ class Cart extends _i1.TableRow {
       'productId': productId,
       'productName': productName,
       'quantity': quantity,
+      'productAmount': productAmount,
       'totalAmount': totalAmount,
     };
   }
@@ -79,6 +85,7 @@ class Cart extends _i1.TableRow {
       'productId': productId,
       'productName': productName,
       'quantity': quantity,
+      'productAmount': productAmount,
       'totalAmount': totalAmount,
     };
   }
@@ -92,6 +99,7 @@ class Cart extends _i1.TableRow {
       'productId': productId,
       'productName': productName,
       'quantity': quantity,
+      'productAmount': productAmount,
       'totalAmount': totalAmount,
     };
   }
@@ -119,6 +127,9 @@ class Cart extends _i1.TableRow {
         return;
       case 'quantity':
         quantity = value;
+        return;
+      case 'productAmount':
+        productAmount = value;
         return;
       case 'totalAmount':
         totalAmount = value;
@@ -257,6 +268,8 @@ class CartTable extends _i1.Table {
 
   final quantity = _i1.ColumnInt('quantity');
 
+  final productAmount = _i1.ColumnDouble('productAmount');
+
   final totalAmount = _i1.ColumnDouble('totalAmount');
 
   @override
@@ -267,6 +280,7 @@ class CartTable extends _i1.Table {
         productId,
         productName,
         quantity,
+        productAmount,
         totalAmount,
       ];
 }

@@ -17,6 +17,8 @@ class CartEndpoint extends Endpoint {
       if (existingCart != null && cart.quantity >= 1) {
         // update quantity
         existingCart.quantity = cart.quantity;
+        existingCart.productAmount = cart.productAmount;
+        existingCart.totalAmount = cart.quantity * cart.productAmount;
         await Cart.update(session, existingCart);
         return true;
       } else if (existingCart != null && cart.quantity == 0) {

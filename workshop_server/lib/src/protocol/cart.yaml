@@ -6,6 +6,7 @@ fields:
   productId: String
   productName: String
   quantity: int
+  productAmount: double
   totalAmount: double
 indexes:
   cart_id_idx:

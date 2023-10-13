@@ -9,6 +9,7 @@ CREATE TABLE "cart" (
   "productId" text NOT NULL,
   "productName" text NOT NULL,
   "quantity" integer NOT NULL,
+  "productAmount" double precision NOT NULL,
   "totalAmount" double precision NOT NULL
 );
 

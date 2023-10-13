@@ -26,6 +26,7 @@ class ProductEndpoint extends Endpoint {
                     quantity: 0,
                     cartId: '',
                     productName: '',
+                    productAmount: 0,
                     totalAmount: 0))
             .quantity;
       }

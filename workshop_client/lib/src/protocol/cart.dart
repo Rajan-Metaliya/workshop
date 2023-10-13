@@ -16,6 +16,7 @@ class Cart extends _i1.SerializableEntity {
     required this.productId,
     required this.productName,
     required this.quantity,
+    required this.productAmount,
     required this.totalAmount,
   });
 
@@ -35,6 +36,8 @@ class Cart extends _i1.SerializableEntity {
           .deserialize<String>(jsonSerialization['productName']),
       quantity:
           serializationManager.deserialize<int>(jsonSerialization['quantity']),
+      productAmount: serializationManager
+          .deserialize<double>(jsonSerialization['productAmount']),
       totalAmount: serializationManager
           .deserialize<double>(jsonSerialization['totalAmount']),
     );
@@ -55,6 +58,8 @@ class Cart extends _i1.SerializableEntity {
 
   int quantity;
 
+  double productAmount;
+
   double totalAmount;
 
   @override
@@ -66,6 +71,7 @@ class Cart extends _i1.SerializableEntity {
       'productId': productId,
       'productName': productName,
       'quantity': quantity,
+      'productAmount': productAmount,
       'totalAmount': totalAmount,
     };
   }
