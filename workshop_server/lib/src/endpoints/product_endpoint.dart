@@ -1,16 +1,34 @@
 import 'package:serverpod/server.dart';
 import 'package:workshop_client/workshop_client.dart' show AppResponse;
-import 'package:workshop_server/src/generated/product.dart';
+import 'package:workshop_server/src/generated/protocol.dart';
 
 class ProductEndpoint extends Endpoint {
   // getAll Products
 
-  Future<List<Product>> getAllProducts(Session session) async {
+  Future<List<Product>> getAllProducts(Session session, String userId) async {
     try {
       final products = await Product.find(
         session,
         where: (t) => t.id >= 0,
       );
+
+      final cartProducts = await Cart.find(
+        session,
+        where: (t) => t.userId.equals(userId),
+      );
+
+      for (var product in products) {
+        product.cartQty = cartProducts
+            .firstWhere((element) => element.productId == product.productId,
+                orElse: () => Cart(
+                    userId: userId,
+                    productId: product.productId,
+                    quantity: 0,
+                    cartId: '',
+                    productName: '',
+                    totalAmount: 0))
+            .quantity;
+      }
 
       return products;
     } catch (e) {

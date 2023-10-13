@@ -150,6 +150,12 @@ class Protocol extends _i1.SerializationManagerServer {
           isNullable: false,
           dartType: 'double',
         ),
+        _i2.ColumnDefinition(
+          name: 'cartQty',
+          columnType: _i2.ColumnType.integer,
+          isNullable: true,
+          dartType: 'int?',
+        ),
       ],
       foreignKeys: [],
       indexes: [

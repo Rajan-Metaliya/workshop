@@ -68,11 +68,11 @@ class _EndpointProduct extends _i1.EndpointRef {
   @override
   String get name => 'product';
 
-  _i2.Future<List<_i5.Product>> getAllProducts() =>
+  _i2.Future<List<_i5.Product>> getAllProducts(String userId) =>
       caller.callServerEndpoint<List<_i5.Product>>(
         'product',
         'getAllProducts',
-        {},
+        {'userId': userId},
       );
 
   _i2.Future<_i5.Product> getProduct(int id) =>

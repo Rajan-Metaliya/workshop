@@ -28,7 +28,8 @@ CREATE TABLE "product" (
   "name" text NOT NULL,
   "image" text NOT NULL,
   "description" text NOT NULL,
-  "price" double precision NOT NULL
+  "price" double precision NOT NULL,
+  "cartQty" integer
 );
 
 ALTER TABLE ONLY "product"

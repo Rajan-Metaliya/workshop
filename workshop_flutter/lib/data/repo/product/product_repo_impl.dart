@@ -24,9 +24,9 @@ class ProductRepoImpl extends ProductRepo {
   }
 
   @override
-  Future<List<Product>> getProductList() async {
+  Future<List<Product>> getProductList(String userId) async {
     try {
-      final products = await apiServer.client.product.getAllProducts();
+      final products = await apiServer.client.product.getAllProducts(userId);
 
       return products;
     } catch (e) {

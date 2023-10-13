@@ -152,13 +152,21 @@ class Endpoints extends _i1.EndpointDispatch {
       methodConnectors: {
         'getAllProducts': _i1.MethodConnector(
           name: 'getAllProducts',
-          params: {},
+          params: {
+            'userId': _i1.ParameterDescription(
+              name: 'userId',
+              type: _i1.getType<String>(),
+              nullable: false,
+            )
+          },
           call: (
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['product'] as _i4.ProductEndpoint)
-                  .getAllProducts(session),
+              (endpoints['product'] as _i4.ProductEndpoint).getAllProducts(
+            session,
+            params['userId'],
+          ),
         ),
         'getProduct': _i1.MethodConnector(
           name: 'getProduct',

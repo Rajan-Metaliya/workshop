@@ -16,6 +16,7 @@ class Product extends _i1.TableRow {
     required this.image,
     required this.description,
     required this.price,
+    this.cartQty,
   }) : super(id);
 
   factory Product.fromJson(
@@ -33,6 +34,8 @@ class Product extends _i1.TableRow {
           .deserialize<String>(jsonSerialization['description']),
       price:
           serializationManager.deserialize<double>(jsonSerialization['price']),
+      cartQty:
+          serializationManager.deserialize<int?>(jsonSerialization['cartQty']),
     );
   }
 
@@ -47,6 +50,8 @@ class Product extends _i1.TableRow {
   String description;
 
   double price;
+
+  int? cartQty;
 
   @override
   String get tableName => 'product';
@@ -72,6 +77,7 @@ class Product extends _i1.TableRow {
       'image': image,
       'description': description,
       'price': price,
+      'cartQty': cartQty,
     };
   }
 
@@ -84,6 +90,7 @@ class Product extends _i1.TableRow {
       'image': image,
       'description': description,
       'price': price,
+      'cartQty': cartQty,
     };
   }
 
@@ -110,6 +117,9 @@ class Product extends _i1.TableRow {
         return;
       case 'price':
         price = value;
+        return;
+      case 'cartQty':
+        cartQty = value;
         return;
       default:
         throw UnimplementedError();
@@ -245,6 +255,8 @@ class ProductTable extends _i1.Table {
 
   final price = _i1.ColumnDouble('price');
 
+  final cartQty = _i1.ColumnInt('cartQty');
+
   @override
   List<_i1.Column> get columns => [
         id,
@@ -253,6 +265,7 @@ class ProductTable extends _i1.Table {
         image,
         description,
         price,
+        cartQty,
       ];
 }
 

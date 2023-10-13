@@ -15,7 +15,8 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<ProductFetchEvent>((event, emit) async {
       emit(ProductLoadingState());
       try {
-        final products = await productRepo.getProductList();
+        final products =
+            await productRepo.getProductList(authService.user.userId);
         emit(ProductLoadedState(products));
       } catch (e) {
         emit(ProductErrorState(e.toString()));
