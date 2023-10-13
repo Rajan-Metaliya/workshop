@@ -54,7 +54,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         var product = Product(
           productId: Faker().guid.guid(),
           name: faker.company.person.name(),
-          price: faker.randomGenerator.decimal(scale: 2, min: 1),
+          price: faker.randomGenerator.amount((_) => 11.0, 1, min: 1).first,
           description: faker.lorem.sentence(),
           image: faker.image.image(),
         );

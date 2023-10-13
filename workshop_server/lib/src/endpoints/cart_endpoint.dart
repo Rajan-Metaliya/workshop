@@ -14,12 +14,12 @@ class CartEndpoint extends Endpoint {
             t.userId.equals(cart.userId) & t.productId.equals(cart.productId),
       );
 
-      if (existingCart != null && existingCart.quantity > 1) {
+      if (existingCart != null && existingCart.quantity > 0) {
         // update quantity
         existingCart.quantity = cart.quantity;
         await Cart.update(session, existingCart);
         return true;
-      }  else if (existingCart != null && existingCart.quantity == 1) {
+      } else if (existingCart != null && existingCart.quantity == 0) {
         // delete cart
         await Cart.delete(
           session,
@@ -27,7 +27,6 @@ class CartEndpoint extends Endpoint {
         );
         return true;
       }
-
 
       await Cart.insert(session, cart);
       return true;

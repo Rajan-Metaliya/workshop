@@ -24,26 +24,24 @@ class QuantityInputWidget extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-          width: 30,
-          height: 30,
+          width: 40,
           child: ElevatedButton(
             onPressed: () {
               onChanged(quantity - 1);
             },
-            child: const Text('-'),
+            child: const Text('-', style: TextStyle(fontSize: 25)),
           ),
         ),
         const SizedBox(width: 10),
-        Text('$quantity'),
+        Text('$quantity', style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(width: 10),
         SizedBox(
-          width: 30,
-          height: 30,
+          width: 40,
           child: ElevatedButton(
             onPressed: () {
               onChanged(quantity + 1);
             },
-            child: const Text('+'),
+            child: const Text('+', style: TextStyle(fontSize: 20)),
           ),
         ),
       ],
